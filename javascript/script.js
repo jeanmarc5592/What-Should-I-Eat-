@@ -27,8 +27,6 @@ var Dish = function(name, image, recipe, ingredients) {
 var allDishes = [];
 
 
-// Retrieving the array from localStorage
-var getAllDishes = JSON.parse(localStorage.getItem('dishes'));
 
 
 // CREATING A NEW DISH VIA INPUT
@@ -41,15 +39,13 @@ BtnAdd.addEventListener('click', function(e) {
     // Store data in localStorage
     var savedDishes = localStorage.setItem('dishes', JSON.stringify(allDishes));
     console.log(allDishes, localStorage);
-    // Adding a new element to the dish collection
     // Retrieving the array from localStorage
     var getAllDishes = JSON.parse(localStorage.getItem('dishes'));
+    // Adding a new element to the dish collection
     var newElement = document.createElement('img');
     myDishes.appendChild(newElement);
     newElement.classList.add('bottom__img');
     newElement.setAttribute('src', getAllDishes.slice(-1)[0].image);
-    // Storing the new element in local Storage
-    var savedNewElement = localStorage.setItem('elements', JSON.stringify(newElement));
     // Resetting input fields after submit
     form.reset();
 });
@@ -58,6 +54,8 @@ BtnAdd.addEventListener('click', function(e) {
 
 // GENERATING A RANDOM DISH
 BtnGenerate.addEventListener('click', function() {
+    // Retrieving the array from localStorage
+    var getAllDishes = JSON.parse(localStorage.getItem('dishes'));
     // Declaring a random number
     var n = Math.floor(Math.random() * getAllDishes.length);
     // Display the image of the random dish
