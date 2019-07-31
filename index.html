@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <title>What should I Eat?</title>
+
+        <link rel="stylesheet" href="sass/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,400,700&display=swap" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+      <section class="top">
+        <div class="top__box">
+          <h1 class="heading-primary">What should I Eat?</h1>
+          <div id="random-name" class="top__name">%Dish Name%</div>
+          <figure id="random-img" class="top__dish">
+            &nbsp;
+          </figure>
+          <button id="generateBtn" class="btn btn--generate">Generate &checkmark;</button>
+        </div>
+      </section>
+
+      <section class="middle">
+        <h2 class="heading-secondary heading-secondary--green">Add a new dish!</h2>
+        <form name="dishes-input" class="middle__input">
+          <input class="middle__name" type="text" placeholder="Name" required>
+          <input class="middle__imageurl" type="text" placeholder="Image URL" required>
+          <textarea class="middle__recipe" name="recipe" placeholder="Recipe" required></textarea>
+          <textarea class="middle__ingredients" name="ingredients" placeholder="Ingredients" required></textarea>
+          <button id="addBtn" class="btn btn--add">Add dish &plus;</button>
+        </form>
+        
+      </section>
+
+      <section class="bottom">
+        <h2 class="heading-secondary">My dishes</h2>
+        <div class="bottom__grid">
+          <!-- <img src="/img/ex-1.jpg" alt="" class="bottom__img"> -->
+        </div>
+      </section>
+
+     
+      <div class="popup">
+        <div class="popup__box">
+          <div id="random-name" class="top__name">%Dish Name%</div>
+          <figure id="random-img" class="top__dish">
+            &nbsp;
+          </figure> 
+        </div>
+      </div>
+    
+
+
+    <script src="javascript/script.js"></script>
+    </body>
+
+
+
+</html>

@@ -1,0 +1,245 @@
+// ----------------
+// ----- ABSTRACTS
+// ----------------
+
+// ----- VARIABLES
+$color-black: #2d3436;
+$color-orange: #ffeaa7;
+$color-white: #fff;
+$color-grey: #ebe8e8;
+$color-green: #00b894;
+
+
+
+// ----------------
+// ----- BASE
+// ----------------
+
+html {
+    font-size: 62.5%;
+    font-family: 'Raleway';
+    color: $color-black;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+// ----------------
+// ----- TYPOGRAPHY
+// ----------------
+.heading-primary {
+    font-size: 5rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: $color-orange;
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    text-align: center;
+
+    &--green {
+        &::after {
+            content: '';
+            display: block;
+            width: 15rem;
+            height: .3rem;
+            margin: 1.5rem auto;
+            background-color: $color-green;
+        }
+    }
+}
+
+
+
+
+
+// ----------------
+// ----- LAYOUT & COMPONENTS
+// ----------------
+
+// ----- SECTIONS
+.top,
+.middle,
+.bottom {
+    padding: 3rem;
+}
+
+.top {
+    background-image: linear-gradient(to right, rgba($color-black, .6), rgba($color-black, .6)), url('../img/main-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    
+    position: relative;
+
+    &__box {
+        background-color: rgba($color-black, .6);
+        color: $color-white;
+        border-radius: 1rem;
+        box-shadow: 0rem 2rem 4rem rgba($color-orange, .6);
+        padding: 3rem;
+        width: 70vw;
+        text-align: center;
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__dish {
+        background-image: url('../img/example-img.jpg');
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vh;
+        width: 35vw;
+        margin: 2rem auto;
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+
+    &__name {
+        margin-top: 3rem;
+        font-size: 2.5rem;
+        text-decoration: underline;
+    }
+
+    
+}
+
+.middle {
+    background-color: $color-grey;
+    padding: 7rem 0;
+
+    &__input {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 8rem;
+    }
+
+    &__name,
+    &__imageurl,
+    &__recipe,
+    &__ingredients {
+        width: 30%;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        border: 2px solid transparent;
+
+        font-size: 1.8rem;
+
+        &::placeholder {
+            font-size: inherit;
+            color: $color-green;
+
+        }
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $color-green;
+        }
+    }
+}
+
+
+.bottom {
+    padding-top: 7rem;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+
+        margin-top: 8rem;
+
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: cover;
+        height: 50vh;
+        cursor: pointer;
+    }
+}
+
+
+
+
+// ----- BUTTONS
+.btn {
+    width: 30%;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: transparent;
+
+    &:focus {
+        outline: none;
+    }
+
+    &--generate {
+        color: $color-orange;
+        transition: all .3s;
+        border: 1px solid $color-orange;
+
+        &:hover {
+            color: $color-black;
+            background-color: $color-orange;
+        }
+    }
+
+    &--add {
+        border: 2px solid $color-green;
+        transition: all .3s;
+
+        &:hover {
+            background-color: $color-green;
+            color: $color-white;
+        }
+    }
+}
+
+
+.popup {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba($color-orange, .8);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    &__box {
+        width: 50vw;
+        background-color: white;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

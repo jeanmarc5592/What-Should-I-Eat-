@@ -1,0 +1,215 @@
+html {
+  font-size: 62.5%;
+  font-family: 'Raleway';
+  color: #2d3436;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.heading-primary {
+  font-size: 5rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  color: #ffeaa7;
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.heading-secondary--green::after {
+  content: '';
+  display: block;
+  width: 15rem;
+  height: .3rem;
+  margin: 1.5rem auto;
+  background-color: #00b894;
+}
+
+.top,
+.middle,
+.bottom {
+  padding: 3rem;
+}
+
+.top {
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(45, 52, 54, 0.6)), to(rgba(45, 52, 54, 0.6))), url("../img/main-bg.jpg");
+  background-image: linear-gradient(to right, rgba(45, 52, 54, 0.6), rgba(45, 52, 54, 0.6)), url("../img/main-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  position: relative;
+}
+
+.top__box {
+  background-color: rgba(45, 52, 54, 0.6);
+  color: #fff;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0rem 2rem 4rem rgba(255, 234, 167, 0.6);
+          box-shadow: 0rem 2rem 4rem rgba(255, 234, 167, 0.6);
+  padding: 3rem;
+  width: 70vw;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.top__dish {
+  background-image: url("../img/example-img.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+  width: 35vw;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.top__name {
+  margin-top: 3rem;
+  font-size: 2.5rem;
+  text-decoration: underline;
+}
+
+.middle {
+  background-color: #ebe8e8;
+  padding: 7rem 0;
+}
+
+.middle__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 8rem;
+}
+
+.middle__name, .middle__imageurl, .middle__recipe, .middle__ingredients {
+  width: 30%;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border: 2px solid transparent;
+  font-size: 1.8rem;
+}
+
+.middle__name::-webkit-input-placeholder, .middle__imageurl::-webkit-input-placeholder, .middle__recipe::-webkit-input-placeholder, .middle__ingredients::-webkit-input-placeholder {
+  font-size: inherit;
+  color: #00b894;
+}
+
+.middle__name:-ms-input-placeholder, .middle__imageurl:-ms-input-placeholder, .middle__recipe:-ms-input-placeholder, .middle__ingredients:-ms-input-placeholder {
+  font-size: inherit;
+  color: #00b894;
+}
+
+.middle__name::-ms-input-placeholder, .middle__imageurl::-ms-input-placeholder, .middle__recipe::-ms-input-placeholder, .middle__ingredients::-ms-input-placeholder {
+  font-size: inherit;
+  color: #00b894;
+}
+
+.middle__name::placeholder, .middle__imageurl::placeholder, .middle__recipe::placeholder, .middle__ingredients::placeholder {
+  font-size: inherit;
+  color: #00b894;
+}
+
+.middle__name:focus, .middle__imageurl:focus, .middle__recipe:focus, .middle__ingredients:focus {
+  outline: none;
+  border-bottom: 2px solid #00b894;
+}
+
+.bottom {
+  padding-top: 7rem;
+}
+
+.bottom__grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-top: 8rem;
+}
+
+.bottom__img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 50vh;
+  cursor: pointer;
+}
+
+.btn {
+  width: 30%;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn--generate {
+  color: #ffeaa7;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border: 1px solid #ffeaa7;
+}
+
+.btn--generate:hover {
+  color: #2d3436;
+  background-color: #ffeaa7;
+}
+
+.btn--add {
+  border: 2px solid #00b894;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.btn--add:hover {
+  background-color: #00b894;
+  color: #fff;
+}
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 234, 167, 0.8);
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup__box {
+  width: 50vw;
+  background-color: white;
+}
+/*# sourceMappingURL=main.css.map */
