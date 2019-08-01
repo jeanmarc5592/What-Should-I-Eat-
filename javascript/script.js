@@ -1,6 +1,7 @@
 // DOM SELECTORS
 var BtnGenerate = document.getElementById('generateBtn');
 var BtnAdd = document.getElementById('addBtn');
+var BtnClear = document.getElementById('clearBtn');
 
 var form = document.querySelector('form');
 var inputName = document.querySelector('.middle__name');
@@ -14,6 +15,15 @@ var randomNAME = document.getElementById('random-name');
 var myDishes = document.querySelector('.bottom__grid');
 
 
+
+// GLOBAL VARIABLES
+var allDishes = [];
+var getDishes = JSON.parse(localStorage.getItem('dishes'));
+var newDish;
+
+
+
+
 // FUNCTION CONSTRUCTOR
 var Dish = function(name, image, recipe, ingredients) {
     this.name = name.value;
@@ -23,32 +33,44 @@ var Dish = function(name, image, recipe, ingredients) {
 }
 
 
-// ALL DISHES SAVED IN ARRAY
-var allDishes = [];
-
-
-
 
 // CREATING A NEW DISH VIA INPUT
+
+// Checking the localStorage everytime when reloading the page to keep the data displayed
+if(getDishes) {
+    // Read the localStorage via getDishes and iterate over it
+    getDishes.forEach(function(item) {
+        // Create a new Image
+        var newItem = document.createElement('img');
+        // add class to it, set img src and append it to the parent div
+        newItem.classList.add('bottom__img');
+        newItem.setAttribute('src', item.image);
+        myDishes.appendChild(newItem);
+        // Refill the allDishes array again because it's empty after reloading
+        allDishes.push(item);
+    });
+};
+
+
+// EventListener for clicking the add Button
 BtnAdd.addEventListener('click', function(e) {
     e.preventDefault();
-    // Declaring a new Dish
-    var newDish = new Dish(inputName, inputImg, inputRecipe, inputIngredients);
-    // Pushing the new dish into the array
+    // Create a new Object based on the Function Constructor, values from input-fields
+    newDish = new Dish(inputName, inputImg, inputRecipe, inputIngredients);
+    // Push it into the allDishes array
     allDishes.push(newDish);
-    // Store data in localStorage
-    var savedDishes = localStorage.setItem('dishes', JSON.stringify(allDishes));
-    console.log(allDishes, localStorage);
-    // Retrieving the array from localStorage
-    var getAllDishes = JSON.parse(localStorage.getItem('dishes'));
-    // Adding a new element to the dish collection
-    var newElement = document.createElement('img');
-    myDishes.appendChild(newElement);
-    newElement.classList.add('bottom__img');
-    newElement.setAttribute('src', getAllDishes.slice(-1)[0].image);
-    // Resetting input fields after submit
+    // Store the array in the localStorage
+    localStorage.setItem('dishes', JSON.stringify(allDishes));
+    // Create a new img, set img src and append it to the parent div
+    var newItem = document.createElement('img');
+    newItem.classList.add('bottom__img');
+    newItem.setAttribute('src', newDish.image);
+    myDishes.appendChild(newItem);
+     
     form.reset();
 });
+
+
 
 
 
@@ -63,6 +85,15 @@ BtnGenerate.addEventListener('click', function() {
     // Display the name of the random dish
     randomNAME.textContent = getAllDishes[n].name;
 });
+
+
+
+// CLEARING ALL MY DISHES AT ONCE AND RELOAD PAGE
+BtnClear.addEventListener('click', function() {
+    localStorage.clear();
+    location.reload();
+})
+
 
 
 

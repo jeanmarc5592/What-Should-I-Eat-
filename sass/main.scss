@@ -155,7 +155,11 @@ html {
 .bottom {
     padding-top: 7rem;
 
-    &__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+   &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 2rem;
@@ -208,6 +212,20 @@ html {
             background-color: $color-green;
             color: $color-white;
         }
+    }
+
+    &--clear {
+        margin: 9rem 0;
+        color: red;
+        border: 2px solid red;
+        transition: all .3s;
+
+    
+        &:hover {
+            background-color: red;
+            color: $color-white;
+        }
+    
     }
 }
 
