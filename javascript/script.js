@@ -12,10 +12,13 @@ var inputIngredients = document.querySelector('.middle__ingredients');
 
 var randomIMG = document.getElementById('random-img');
 var randomNAME = document.getElementById('random-name');
-var randomIMGPopup = document.getElementById('random-img-popup');
-var randomNAMEPopup = document.getElementById('random-name-popup');
 var randomRECIPE = document.getElementById('random-recipe');
 var randomINGREDIENTS = document.getElementById('random-ingredients');
+
+var popupNAME = document.getElementById('name-popup');
+var popupIMG = document.getElementById('img-popup');
+var popupRECIPE = document.getElementById('recipe-popup');
+var popupINGREDIENTS = document.getElementById('ingredients-popup');
 
 var myDishes = document.querySelector('.bottom__grid');
 var popup = document.querySelector('.popup');
@@ -25,7 +28,6 @@ var popup = document.querySelector('.popup');
 // GLOBAL VARIABLES
 var allDishes = [];
 var newDish;
-
 
 
 
@@ -43,12 +45,25 @@ var createNewDish = function() {
     // Store the array in the localStorage
     localStorage.setItem('dishes', JSON.stringify(allDishes));
     // Create a new img, set img src and append it to the parent div
-    var newItem = document.createElement('img');
-    newItem.classList.add('bottom__img');
-    newItem.setAttribute('src', newDish.image);
-    myDishes.appendChild(newItem);
+    createNewItem(newDish);
     // Clearing Input Fields after submit
     form.reset();
+};
+
+var createNewItem = function(source) {
+    var newItem = document.createElement('img');
+    newItem.classList.add('bottom__img');
+    newItem.setAttribute('src', source.image);
+    myDishes.appendChild(newItem);
+    return newItem;
+};
+
+var popupCreation = function(source) {
+    popup.style.display = 'flex';
+    popupNAME.textContent = source.name;
+    popupIMG.style.backgroundImage = "url("+ source.image +")";
+    popupRECIPE.textContent = source.recipe;
+    popupINGREDIENTS.textContent = source.ingredients;
 };
 
 
@@ -57,21 +72,21 @@ var init = function() {
     getDishes();
     // Checking the localStorage everytime when reloading the page to keep the data displayed
     if(getDishes()) {
-        // Read the localStorage via getDishes and iterate over it
+        // Read the localStorage via getDishes function and iterate over it
         getDishes().forEach(function(item) {
-            // Create a new Image
-            var newItem = document.createElement('img');
-            // add class to it, set img src and append it to the parent div
+            // Create a new Image and add it to 'My Dishes'
+            /*var newItem = document.createElement('img');
             newItem.classList.add('bottom__img');
             newItem.setAttribute('src', item.image);
             myDishes.appendChild(newItem);
             // Opening popup with details of the individual dish
             newItem.addEventListener('click', function() {
-                popup.style.display = 'flex';
-                randomNAMEPopup.textContent = item.name;
-                randomIMGPopup.style.backgroundImage = "url("+ item.image +")";
-                randomRECIPE.textContent = item.recipe;
-                randomINGREDIENTS.textContent = item.ingredients;
+                popupCreation(item)
+            }); */
+            var newImage = createNewItem(item);
+            // Display the popup when clicking on the individual Image
+            newImage.addEventListener('click', function() {
+                popupCreation(item);
             });
             // Refill the allDishes array again because it's empty after reloading
             allDishes.push(item);
@@ -108,6 +123,7 @@ BtnAdd.addEventListener('click', function(e) {
 // CREATING A NEW DISH VIA INPUT WHEN HITTING ENTER
 document.addEventListener('keypress', function(event) {
     if(event.keyCode === 13 || event.which === 13) {
+        event.preventDefault();
         createNewDish();
     }
 });
@@ -118,23 +134,21 @@ document.addEventListener('keypress', function(event) {
 BtnGenerate.addEventListener('click', function() {
     // Retrieving the array from localStorage
     var getAllDishes = getDishes();
+    // If at least one dish is created
     if(getAllDishes) {
         // Declaring a random number
         var n = Math.floor(Math.random() * getAllDishes.length);
+        // Local Variables
+        var randomDish = getAllDishes[n];
         // Display the image of the random dish
-        randomIMG.style.backgroundImage = "url("+ getAllDishes[n].image +")";
+        randomIMG.style.backgroundImage = "url("+ randomDish.image +")";
         // Display the name of the random dish
-        randomNAME.textContent = getAllDishes[n].name;
-        // Display the recipe of the random dish inside the popup
-        randomRECIPE.textContent = getAllDishes[n].recipe;
-        // Display the ingredients of the random dish inside the popup
-        randomINGREDIENTS.textContent = getAllDishes[n].ingredients;
+        randomNAME.textContent = randomDish.name;
         // OPENING THE POPUP OUT OF THE RANDOM DISH AND DISPLAY DETAILS
         randomIMG.addEventListener('click', function() {
-            popup.style.display = 'flex';
-            randomIMGPopup.style.backgroundImage = "url("+ getAllDishes[n].image +")";
-            randomNAMEPopup.textContent = getAllDishes[n].name;
+            popupCreation(randomDish);
         });
+    // If no dish is created
     } else {
         randomNAME.textContent = 'Please add at least one dish';
     }
