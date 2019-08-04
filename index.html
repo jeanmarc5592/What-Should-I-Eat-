@@ -15,7 +15,7 @@
       <section class="top">
         <div class="top__box">
           <h1 class="heading-primary">What should I Eat?</h1>
-          <div id="random-name" class="top__name">%Dish Name%</div>
+          <div id="random-name" class="top__name">Pick A Dish!</div>
           <figure id="random-img" class="top__dish">
             &nbsp;
           </figure>
@@ -32,7 +32,6 @@
           <textarea class="middle__ingredients" name="ingredients" placeholder="Ingredients" required></textarea>
           <button id="addBtn" class="btn btn--add">Add dish &plus;</button>
         </form>
-        
       </section>
 
       <section class="bottom">
@@ -46,10 +45,19 @@
      
       <div class="popup">
         <div class="popup__box">
-          <div id="random-name" class="top__name">%Dish Name%</div>
-          <figure id="random-img" class="top__dish">
+          <button id="closeBtn" class="btn btn--close">&Cross;</button>
+          <div id="random-name-popup" class="top__name">%Dish Name%</div>
+          <figure id="random-img-popup" class="top__dish">
             &nbsp;
           </figure> 
+          <div class="popup__recipe">
+            <span class="popup__span">Recipe:</span>
+            <p id="random-recipe">Just a recipe</p>
+          </div>
+          <div class="popup__ingredients">
+              <span class="popup__span">Ingredients:</span>
+              <p id="random-ingredients">Just ingredients</p>
+          </div>
         </div>
       </div>
     

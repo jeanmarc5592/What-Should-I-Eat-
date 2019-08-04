@@ -8,6 +8,7 @@ $color-orange: #ffeaa7;
 $color-white: #fff;
 $color-grey: #ebe8e8;
 $color-green: #00b894;
+$color-red: red;
 
 
 
@@ -109,8 +110,8 @@ html {
 
     &__name {
         margin-top: 3rem;
-        font-size: 2.5rem;
-        text-decoration: underline;
+        font-size: 4rem;
+        font-weight: 100;
     }
 
     
@@ -173,6 +174,10 @@ html {
         object-fit: cover;
         height: 50vh;
         cursor: pointer;
+        transition: all .3s;
+
+     &:hover { filter: grayscale(1); }
+    
     }
 }
 
@@ -216,38 +221,74 @@ html {
 
     &--clear {
         margin: 9rem 0;
-        color: red;
-        border: 2px solid red;
+        color: $color-red;
+        border: 2px solid $color-red;
         transition: all .3s;
 
     
         &:hover {
-            background-color: red;
+            background-color: $color-red;
             color: $color-white;
+        }
+    }
+
+    &--close {
+        border: none;
+        font-size: 7rem;
+        color: $color-black;
+        margin-left: auto;
+        transition: all .3s;
+    
+        &:hover {
+            color: $color-white;
+
         }
     
     }
 }
 
-
+// ----- POPUP
 .popup {
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
-    background-color: rgba($color-orange, .8);
+    background: linear-gradient(to right, #fdc830, #f37335);
+    overflow: scroll;
 
     display: none;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    
+
     
     &__box {
-        width: 50vw;
-        background-color: white;
+        width: 100vw;
+        color: white;
 
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
+    & span {
+        font-size: 2.5rem;
+        text-decoration: underline;
+   
+    }
+
+    &__recipe,
+    &__ingredients {
+        font-size: 1.8rem;
+        margin-bottom: 5rem;
+        text-align: center;
+    }
+
+}
+
+#random-recipe,
+#random-ingredients {
+    margin-top: 2rem;
 }
 
 

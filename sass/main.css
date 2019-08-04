@@ -79,8 +79,8 @@ html {
 
 .top__name {
   margin-top: 3rem;
-  font-size: 2.5rem;
-  text-decoration: underline;
+  font-size: 4rem;
+  font-weight: 100;
 }
 
 .middle {
@@ -164,6 +164,13 @@ html {
      object-fit: cover;
   height: 50vh;
   cursor: pointer;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.bottom__img:hover {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .btn {
@@ -216,23 +223,64 @@ html {
   color: #fff;
 }
 
+.btn--close {
+  border: none;
+  font-size: 7rem;
+  color: #2d3436;
+  margin-left: auto;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.btn--close:hover {
+  color: #fff;
+}
+
 .popup {
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
-  background-color: rgba(255, 234, 167, 0.8);
+  background: -webkit-gradient(linear, left top, right top, from(#fdc830), to(#f37335));
+  background: linear-gradient(to right, #fdc830, #f37335);
+  overflow: scroll;
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.popup__box {
+  width: 100vw;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.popup__box {
-  width: 50vw;
-  background-color: white;
+.popup span {
+  font-size: 2.5rem;
+  text-decoration: underline;
+}
+
+.popup__recipe, .popup__ingredients {
+  font-size: 1.8rem;
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+#random-recipe,
+#random-ingredients {
+  margin-top: 2rem;
 }
 /*# sourceMappingURL=main.css.map */
